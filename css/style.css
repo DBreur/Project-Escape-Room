@@ -59,3 +59,15 @@ button {
   padding: 5px 10px;
   cursor: pointer;
 }
+
+#lose {
+  justify-content: center;
+}
+
+#lose-text {
+  justify-content: center;
+}
+
+#lose-color {
+  background-color: red;
+}
