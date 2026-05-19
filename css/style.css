@@ -71,3 +71,15 @@ button {
 #lose-color {
   background-color: red;
 }
+
+#win {
+  justify-content: center;
+}
+
+#win-text {
+  justify-content: center;
+}
+
+#win-color {
+  background-color: green;
+}
