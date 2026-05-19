@@ -29,7 +29,7 @@ CREATE TABLE `questions` (
   `answer` varchar(255) DEFAULT NULL,
   `roomId` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `questions` (
 --
 
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (1,'Er staan 3 stapels dozen en achter welke ligt de hint?','De hint ligt achter de stapel met de minste dozen.','Achter de stapel met de minste dozen.',1),(2,'Met wat was ik de kleding?','Hoe krijgt de wasmachine stroom?','De stroom kabel.',1),(3,'Hoeveel trap tredens zijn er en deel het door 2 en dan heb je het laatste cijfer voor de kluis.','klik op de trap','6',1);
+INSERT INTO `questions` VALUES (1,'Er staan 3 stapels dozen en achter welke ligt de hint?','De hint ligt achter de stapel met de minste dozen.','Achter de stapel met de minste dozen.',1),(2,'Met wat was ik de kleding?','Hoe krijgt de wasmachine stroom?','De stroom kabel.',1),(3,'Hoeveel trap tredens zijn er en deel het door 2 en dan heb je het laatste cijfer voor de kluis.','klik op de trap','6',1),(4,'Wat is de code van de trapkast?','Kijk naar het pinbord?','1683',2),(5,'Wat is de code van de kluis?','Kijk naar de lamp','⬆️⬆️⬇️⬅️',2),(6,'Welke sleutel hoort bij de deur','Kijk naar de kleur van de deur.','Rood',2);
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 
 --
@@ -53,4 +53,4 @@ INSERT INTO `questions` VALUES (1,'Er staan 3 stapels dozen en achter welke ligt
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-05-19 12:55:38
+-- Dump completed on 2026-05-19 13:05:39
