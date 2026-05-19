@@ -8,5 +8,5 @@ CREATE TABLE riddles (
 
 INSERT INTO riddles (riddle, answer, hint, roomId)
 VALUES
-    ('Welke Pokémon is nummer 25 in de Pokédex?', 'Pikachu', 'Het is de mascotte van Pokémon.', 1),
-    ('')
+    ('er staan 3 stapel dozen en achter welke ligt de hint?', 'achter de stapel met de minste dozen', 'De hint ligt achter de stapel met de minste dozen.', 1),
+  
