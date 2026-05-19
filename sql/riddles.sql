@@ -9,4 +9,4 @@ CREATE TABLE riddles (
 INSERT INTO riddles (riddle, answer, hint, roomId)
 VALUES
     ('Welke Pokémon is nummer 25 in de Pokédex?', 'Pikachu', 'Het is de mascotte van Pokémon.', 1),
-
+    ('')
