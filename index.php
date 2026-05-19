@@ -12,7 +12,7 @@
 
   <h1>Welkom</h1>
   <p>Je bent een 12-jarige jongen en zit opgesloten in de kelder van je stiefmoeders huis.
-Om te ontsnappen, moet je eerst de reservesleutel vinden waarmee je de kelderdeur kunt openen.
+Om te ontsnappen, moet je eerst de code van de kluis vinden om de reservesleutel er uit te halen waarmee je de kelderdeur kunt openen.
 Als je eenmaal boven bent, kom je in de hal van het huis. Daar ligt ergens de sleutel van de voordeur verstopt.
 Lukt het jou om alle hints te vinden en op tijd uit het huis te ontsnappen?</p>
 
