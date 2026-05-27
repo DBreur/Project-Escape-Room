@@ -80,6 +80,8 @@ button {
 
 #homepage-image {
 background-size: cover;
+  background-image: url(/img/homepage.jpg);
+  background-repeat: no-repeat;
 }
 
 .room2 {
