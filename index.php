@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+<img src="../homepage.png" alt="">
   <h1>Welkom</h1>
   <p>Je bent een 12-jarige jongen en zit opgesloten in de kelder van je stiefmoeders huis.
 Om te ontsnappen, moet je eerst de code van de kluis vinden om de reservesleutel er uit te halen waarmee je de kelderdeur kunt openen.
