@@ -92,7 +92,11 @@ button {
   background-color: green;
 }
 
-
+#homepage-image {
+background-size: cover;
+  background-image: url(/img/homepage.jpg);
+  background-repeat: no-repeat;
+}
 
 body.room2 {
   background-image: url(../img/gang.png);
