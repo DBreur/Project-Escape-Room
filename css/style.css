@@ -1,3 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   font-family: Arial, sans-serif;
   text-align: center;
@@ -80,8 +94,9 @@ button {
 
 
 
-.room2 {
-  background-image: url(/img/gang.png);
+body.room2 {
+  background-image: url(../img/gang.png);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
