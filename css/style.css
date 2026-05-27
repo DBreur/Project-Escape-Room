@@ -78,7 +78,9 @@ button {
   background-color: green;
 }
 
-
+#homepage-image {
+background-size: cover;
+}
 
 .room2 {
   background-image: url(/img/gang.png);
