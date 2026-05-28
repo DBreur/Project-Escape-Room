@@ -94,8 +94,9 @@ button {
 
 #homepage-image {
   background-size: cover;
-  background-image: url(/img/homepage.jpg);
+  background-image: url(../img/homepage.jpg);
   background-repeat: no-repeat;
+    background-position: center;
 }
 
 /* De achtergrond afbeelding van de hal */
