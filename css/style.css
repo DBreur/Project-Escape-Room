@@ -155,17 +155,45 @@ button {
   font-weight: bold;
 }
 
-#lose-color {
-  background-color: red;
+/* Win / Lose pages background and result boxes */
+body#win-color,
+body#lose-color {
+  background-image: url("../img/win-verlies.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#win {
-  font-size: 24px;
-  font-weight: bold;
+.result-box {
+  max-width: 900px;
+  margin: 40px;
+  padding: 36px 28px;
+  border-radius: 12px;
+  color: #ffffff;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
 }
 
-#win-color {
-  background-color: green;
+.result-box.win-box {
+  background-color: rgba(34,139,34,0.95); /* green */
+}
+
+.result-box.lose-box {
+  background-color: rgba(220,20,60,0.95); /* red */
+}
+
+.result-box h1 {
+  margin-bottom: 12px;
+  font-size: 34px;
+}
+
+.result-box p {
+  font-size: 18px;
+  line-height: 1.4;
 }
 
 /* De achtergrond afbeelding van de hal */
