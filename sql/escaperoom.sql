@@ -64,42 +64,22 @@ CREATE TABLE `teams` (
 
 --
 -- Table structure for table `users`
---
+-- Table structure for table `users`
 
 CREATE TABLE `users` (
-  `id` int NOT NULL COMMENT 'Primary Key',
-  `username` varchar(255) DEFAULT NULL COMMENT 'Gebruikersnaam',
-  `password` varchar(255) DEFAULT NULL COMMENT 'Beveiligd wachtwoord',
-  `user_id` int NOT NULL
+  `id` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
+  `username` varchar(255) NOT NULL COMMENT 'Gebruikersnaam',
+  `password` varchar(255) NOT NULL COMMENT 'Beveiligd wachtwoord',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_users_username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Indexes for dumped tables
---
-
---
--- Indexes for table `questions`
---
-ALTER TABLE `questions`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `teams`
---
-ALTER TABLE `teams`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
---
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
@@ -108,6 +88,10 @@ ALTER TABLE `questions`
 --
 -- AUTO_INCREMENT for table `teams`
 --
+ALTER TABLE `teams`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+-- Note: `users` is created above with AUTO_INCREMENT and unique username.
 ALTER TABLE `teams`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
