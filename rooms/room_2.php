@@ -43,6 +43,14 @@ try {
     <p id="feedback"></p>
   </section>
 
+  <section id="escapeModal" class="modal-overlay">
+    <section class="modal-content">
+        <span class="close-btn" onclick="closeEscapeModal()">&times;</span>
+        <section id="modal-body-content">
+        </section>
+    </section>
+  </section>
+
   <script src="../js/app.js"></script>
 
 </body>

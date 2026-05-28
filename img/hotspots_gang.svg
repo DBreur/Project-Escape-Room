@@ -17,15 +17,15 @@
     </style>
 
     <!-- voordeur -->
-    <polygon points="1135,105 1410,103 1410,720 1135,706" class="hotspot" onclick="window.parent.location.href='room_2.php?action=inspect&amp;object=voordeur'" />
-    
+    <polygon points="1135,105 1410,103 1410,720 1135,706" class="hotspot" onclick="window.parent.inspectObject('voordeur')" />
+
     <!-- pinbord -->
-    <polygon points="1830,108 1920,53 1920,770 1830,720" class="hotspot" onclick="window.parent.location.href='room_2.php?action=inspect&amp;object=pinbord'" />
+    <polygon points="1830,108 1920,53 1920,770 1830,720" class="hotspot" onclick="window.parent.inspectObject('pinbord')" />
 
     <!-- lamp -->
-    <polygon points="426,205 517,195 606,210 670,412 380,412" class="hotspot" onclick="window.parent.location.href='room_2.php?action=inspect&amp;object=lamp'" />
+    <polygon points="426,205 517,195 606,210 670,412 380,412" class="hotspot" onclick="window.parent.inspectObject('lamp')" />
 
-    <!-- paneel trapkast -->
-    <polygon points="186,490 103,496 103,653 186,645" class="hotspot" onclick="window.parent.location.href='room_2.php?action=inspect&amp;object=paneel'" />
+    <!-- paneel -->
+    <polygon points="186,490 103,496 103,653 186,645" class="hotspot" onclick="window.parent.inspectObject('paneel')" />
 
 </svg>

@@ -56,3 +56,38 @@ function checkAnswer() {
     feedback.style.color = 'red';
   }
 }
+
+window.inspectObject = function (objectName) {
+  const modal = document.getElementById('escapeModal');
+  const contentDiv = document.getElementById('modal-body-content');
+
+  if (modal && contentDiv) {
+    modal.style.display = 'flex';
+    contentDiv.innerHTML = '<p>Aan het onderzoeken...</p>';
+
+    fetch(`../get_hint.php?object=${objectName}`)
+      .then(response => response.text())
+      .then(data => {
+        contentDiv.innerHTML = data;
+      })
+      .catch(error => {
+        contentDiv.innerHTML = '<p>Er ging iets mis.</p>';
+      });
+  } else {
+    console.error("EscapeModal of modal-body-content niet gevonden in de HTML!");
+  }
+}
+
+window.closeEscapeModal = function () {
+  const modal = document.getElementById('escapeModal');
+  if (modal) {
+    modal.style.display = 'none';
+  }
+}
+
+window.addEventListener('click', function (event) {
+  const modal = document.getElementById('escapeModal');
+  if (event.target == modal) {
+    window.closeEscapeModal();
+  }
+});
