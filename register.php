@@ -2,9 +2,9 @@
 session_start();
 require 'dbcon.php';
 
-function ensureAccountsTable(PDO $db_connection) {
+function ensureUsersTable(PDO $db_connection) {
     $db_connection->exec(
-        "CREATE TABLE IF NOT EXISTS accounts (
+        "CREATE TABLE IF NOT EXISTS users (
             id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
             username VARCHAR(255) NOT NULL UNIQUE,
             password VARCHAR(255) NOT NULL
@@ -12,7 +12,7 @@ function ensureAccountsTable(PDO $db_connection) {
     );
 }
 
-ensureAccountsTable($db_connection);
+ensureUsersTable($db_connection);
 
 $message = '';
 
@@ -26,16 +26,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($password !== $confirm) {
         $message = 'Wachtwoorden komen niet overeen.';
     } else {
-        $stmt = $db_connection->prepare('SELECT id FROM accounts WHERE username = ? LIMIT 1');
+        $stmt = $db_connection->prepare('SELECT id FROM users WHERE username = ? LIMIT 1');
         $stmt->execute([$username]);
 
         if ($stmt->fetch()) {
             $message = 'Deze gebruikersnaam is al in gebruik.';
         } else {
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-            $insert = $db_connection->prepare('INSERT INTO accounts (username, password) VALUES (?, ?)');
+            $insert = $db_connection->prepare('INSERT INTO users (username, password) VALUES (?, ?)');
             $insert->execute([$username, $passwordHash]);
 
+            session_regenerate_id(true);
             $_SESSION['user_id'] = $db_connection->lastInsertId();
             $_SESSION['username'] = $username;
             header('Location: index.php');

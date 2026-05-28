@@ -11,6 +11,15 @@
 <body>
   <?php
   session_start();
+  require 'dbcon.php';
+
+  $teamName = null;
+  if (!empty($_SESSION['user_id'])) {
+      $teamStmt = $db_connection->prepare('SELECT t.team FROM teams t JOIN team_members tm ON t.id = tm.team_id WHERE tm.user_id = ? LIMIT 1');
+      $teamStmt->execute([$_SESSION['user_id']]);
+      $teamRow = $teamStmt->fetch(PDO::FETCH_ASSOC);
+      $teamName = $teamRow ? $teamRow['team'] : null;
+  }
   ?>
 
   <header class="site-header">
@@ -18,6 +27,7 @@
     <div class="header-actions">
       <?php if (!empty($_SESSION['username'])): ?>
         <span>Welkom, <?= htmlspecialchars($_SESSION['username']) ?></span>
+        <a class="header-button" href="teams.php">Teams</a>
         <a class="header-button" href="logout.php">Uitloggen</a>
       <?php else: ?>
         <a class="header-button" href="login.php">Inloggen</a>
@@ -26,15 +36,22 @@
     </div>
   </header>
   <main>
-  <h1>Welkom</h1>
-  <p>Je bent een 12-jarige jongen en zit opgesloten in de kelder van je stiefmoeders huis.
+    <div class="content-box">
+      <h1>Welkom</h1>
+      <p>Je bent een 12-jarige jongen en zit opgesloten in de kelder van je stiefmoeders huis.
 Om te ontsnappen, moet je eerst de code van de kluis vinden om de reservesleutel er uit te halen waarmee je de kelderdeur kunt openen.
 Als je eenmaal boven bent, kom je in de hal van het huis. Daar ligt ergens de sleutel van de voordeur verstopt.
 Lukt het jou om alle hints te vinden en op tijd uit het huis te ontsnappen?</p>
 
-  <p> Je hebt 15 minuten de tijd om te ontsnappen, dus wees snel en slim! </p>
+      <?php if (!empty($_SESSION['username'])): ?>
+    <p>Je bent ingelogd als <strong><?= htmlspecialchars($_SESSION['username']) ?></strong><?php if ($teamName): ?> in team <strong><?= htmlspecialchars($teamName) ?></strong><?php endif; ?>.</p>
+    <a class="header-button" href="teams.php">Bekijk teams</a>
+  <?php else: ?>
+    <p>Log in om een team te kiezen en mee te spelen.</p>
+  <?php endif; ?>
 
   <button><a href="./rooms/room_1.php">Klik hier om de escape te starten </a></button>
+    </div>
 </main>
 
 <footer>

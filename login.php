@@ -2,9 +2,9 @@
 session_start();
 require 'dbcon.php';
 
-function ensureAccountsTable(PDO $db_connection) {
+function ensureUsersTable(PDO $db_connection) {
     $db_connection->exec(
-        "CREATE TABLE IF NOT EXISTS accounts (
+        "CREATE TABLE IF NOT EXISTS users (
             id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
             username VARCHAR(255) NOT NULL UNIQUE,
             password VARCHAR(255) NOT NULL
@@ -12,7 +12,7 @@ function ensureAccountsTable(PDO $db_connection) {
     );
 }
 
-ensureAccountsTable($db_connection);
+ensureUsersTable($db_connection);
 
 $message = '';
 
@@ -23,22 +23,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($username === '' || $password === '') {
         $message = 'Vul zowel gebruikersnaam als wachtwoord in.';
     } else {
-        $stmt = $db_connection->prepare('SELECT id, username, password FROM accounts WHERE username = ? LIMIT 1');
+        $stmt = $db_connection->prepare('SELECT id, username, password FROM users WHERE username = ? LIMIT 1');
         $stmt->execute([$username]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($user) {
-            $passwordHash = $user['password'];
-            $isValid = password_get_info($passwordHash)['algo'] !== 0
-                ? password_verify($password, $passwordHash)
-                : hash_equals($passwordHash, $password);
-
-            if ($isValid) {
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['username'] = $user['username'];
-                header('Location: index.php');
-                exit;
-            }
+        if ($user && password_verify($password, $user['password'])) {
+            session_regenerate_id(true);
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            header('Location: index.php');
+            exit;
         }
 
         $message = 'Onjuiste gebruikersnaam of wachtwoord.';

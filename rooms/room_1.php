@@ -1,5 +1,18 @@
 <?php
+session_start();
 require_once('../dbcon.php');
+
+$teamName = 'Geen team geselecteerd';
+if (!empty($_SESSION['user_id'])) {
+  $teamStmt = $db_connection->prepare('SELECT t.team FROM teams t JOIN team_members tm ON t.id = tm.team_id WHERE tm.user_id = ? LIMIT 1');
+  $teamStmt->execute([$_SESSION['user_id']]);
+  $teamRow = $teamStmt->fetch(PDO::FETCH_ASSOC);
+  if ($teamRow) {
+    $teamName = $teamRow['team'];
+  } else {
+    $teamName = 'Nog geen team';
+  }
+}
 
 try {
   $stmt = $db_connection->query("SELECT * FROM questions WHERE roomId = 1");
@@ -20,7 +33,7 @@ try {
 </head>
 
 <body>
-  <h1>Team: ...</h1>
+  <h1>Team: <?= htmlspecialchars($teamName) ?></h1>
 
   <div class="container">
     <?php foreach ($riddles as $index => $riddle) : ?>

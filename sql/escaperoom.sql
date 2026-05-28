@@ -54,17 +54,17 @@ INSERT INTO `questions` (`id`, `question`, `hint`, `answer`, `roomId`) VALUES
 --
 
 CREATE TABLE `teams` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
   `team` varchar(255) NOT NULL,
-  `leden` varchar(255) NOT NULL,
-  `user_id` int NOT NULL
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_teams_name` (`team`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `users`
--- Table structure for table `users`
+--
 
 CREATE TABLE `users` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
@@ -73,9 +73,23 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_users_username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
 
 --
+-- Table structure for table `team_members`
+--
+
+CREATE TABLE `team_members` (
+  `id` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
+  `team_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_team_member` (`team_id`, `user_id`),
+  KEY `idx_team_members_team` (`team_id`),
+  KEY `idx_team_members_user` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 --
 -- AUTO_INCREMENT for dumped tables
 --
@@ -89,11 +103,7 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
--- Note: `users` is created above with AUTO_INCREMENT and unique username.
-ALTER TABLE `teams`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key';
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -102,14 +112,21 @@ ALTER TABLE `users`
   MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key';
 
 --
+-- AUTO_INCREMENT for table `team_members`
+--
+ALTER TABLE `team_members`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key';
+
+--
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `users`
+-- Constraints for table `team_members`
 --
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id`) REFERENCES `teams` (`id`);
+ALTER TABLE `team_members`
+  ADD CONSTRAINT `team_members_ibfk_1` FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `team_members_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
