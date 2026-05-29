@@ -10,11 +10,30 @@ function ensureUsersTable(PDO $db_connection) {
             password VARCHAR(255) NOT NULL
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;"
     );
+
+    $existingColumns = $db_connection->query("SHOW COLUMNS FROM users")->fetchAll(PDO::FETCH_COLUMN);
+    if (in_array('user_id', $existingColumns, true)) {
+        $db_connection->exec('ALTER TABLE users DROP COLUMN user_id');
+    }
+
+    $db_connection->exec(
+        'ALTER TABLE users
+            MODIFY id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            MODIFY username VARCHAR(255) NOT NULL,
+            MODIFY password VARCHAR(255) NOT NULL'
+    );
+
+    try {
+        $db_connection->exec('ALTER TABLE users ADD UNIQUE KEY idx_users_username (username)');
+    } catch (PDOException $ignored) {
+        // unique key may already exist
+    }
 }
 
 ensureUsersTable($db_connection);
 
 $message = '';
+$username = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
@@ -68,8 +87,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <p class="form-error"><?= htmlspecialchars($message) ?></p>
     <?php endif; ?>
     <form method="post" class="auth-form">
-      <label for="username">Gebruikersnaam</label>
-      <input type="text" id="username" name="username" required>
+        <label for="username">Gebruikersnaam</label>
+      <input type="text" id="username" name="username" required value="<?= htmlspecialchars($username ?? '') ?>">
 
       <label for="password">Wachtwoord</label>
       <input type="password" id="password" name="password" required>
