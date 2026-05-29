@@ -16,12 +16,20 @@ function ensureUsersTable(PDO $db_connection) {
         $db_connection->exec('ALTER TABLE users DROP COLUMN user_id');
     }
 
-    $db_connection->exec(
-        'ALTER TABLE users
-            MODIFY id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            MODIFY username VARCHAR(255) NOT NULL,
-            MODIFY password VARCHAR(255) NOT NULL'
-    );
+    try {
+        $db_connection->exec('ALTER TABLE users MODIFY id INT NOT NULL AUTO_INCREMENT');
+    } catch (PDOException $ignored) {
+        // ignore if column already has desired type
+    }
+
+    try {
+        $db_connection->exec('ALTER TABLE users ADD PRIMARY KEY (id)');
+    } catch (PDOException $ignored) {
+        // ignore if primary key already exists
+    }
+
+    $db_connection->exec('ALTER TABLE users MODIFY username VARCHAR(255) NOT NULL');
+    $db_connection->exec('ALTER TABLE users MODIFY password VARCHAR(255) NOT NULL');
 
     try {
         $db_connection->exec('ALTER TABLE users ADD UNIQUE KEY idx_users_username (username)');
