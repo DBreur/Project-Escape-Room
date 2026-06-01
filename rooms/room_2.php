@@ -20,6 +20,8 @@ try {
 </head>
 
 <body class="room2">
+  <h1>Team: <?= htmlspecialchars($teamName) ?></h1>
+
   <h1 class="time"></h1>
   <object data="../img/hotspots_gang.svg" type="image/svg+xml" class="svg-overlay"></object>
 
