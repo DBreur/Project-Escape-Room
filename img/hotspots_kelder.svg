@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+    
+    <style>
+        .hotspot {
+            cursor: pointer;
+            fill: transparent;
+            stroke: #ff0000;
+            transition: fill 0.2s ease, stroke 0.2s ease;
+        }
+        /* TIJDELIJK: Tijdens het bouwen lichten de vakken rood op bij hover.
+           Haal de regels hieronder weg als je game helemaal af is! */
+        .hotspot:hover {
+            fill: rgba(255, 0, 0, 0.15);
+            stroke: #ff0000;
+            stroke-width: 2px;
+        }
+    </style>
+
+    <!-- voordeur -->
+    <polygon points="1135,105 1410,103 1410,720 1135,706" class="hotspot" onclick="window.parent.inspectObject('voordeur')" />
+
+    <!-- pinbord -->
+    <polygon points="1830,108 1920,53 1920,770 1830,720" class="hotspot" onclick="window.parent.inspectObject('pinbord')" />
+
+    <!-- lamp -->
+    <polygon points="426,205 517,195 606,210 670,412 380,412" class="hotspot" onclick="window.parent.inspectObject('lamp')" />
+
+    <!-- paneel -->
+    <polygon points="186,490 103,496 103,653 186,645" class="hotspot" onclick="window.parent.inspectObject('paneel')" />
+
+</svg>
