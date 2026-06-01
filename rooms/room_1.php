@@ -32,7 +32,7 @@ try {
   <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body>
+<body class="room1">
   <h1>Team: <?= htmlspecialchars($teamName) ?></h1>
 
   <div class="container">

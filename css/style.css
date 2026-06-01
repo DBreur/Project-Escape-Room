@@ -220,7 +220,6 @@ button {
   font-weight: bold;
 }
 
-/* Win / Lose pages background and result boxes */
 body#win-color,
 body#lose-color {
   background-image: url("../img/win-verlies.png");
@@ -244,11 +243,11 @@ body#lose-color {
 }
 
 .result-box.win-box {
-  background-color: rgba(34,139,34,0.95); /* green */
+  background-color: rgba(34,139,34,0.95); 
 }
 
 .result-box.lose-box {
-  background-color: rgba(220,20,60,0.95); /* red */
+  background-color: rgba(220,20,60,0.95); 
 }
 
 .result-box h1 {
@@ -359,4 +358,11 @@ body.room2 {
 
 .modal-content button:hover {
   background-color: #b71c1c;
+}
+
+body.room1 {
+  background-image: url(../img/kelder.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
