@@ -17,9 +17,102 @@ body {
   text-align: center;
 }
 
+main {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 20px;
+  background-image: url("../img/homepage.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
 a {
   color: black;
   text-decoration: none;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-button {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #3498db;
+  color: #ffffff;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.header-button:hover {
+  background-color: #217dbb;
+}
+
+.header-button-alt {
+  background-color: #2ecc71;
+}
+
+.header-button-alt:hover {
+  background-color: #209b55;
+}
+
+.auth-form {
+  max-width: 360px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-form label {
+  text-align: left;
+  font-weight: bold;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.content-box {
+  background-color: rgba(255,255,255,0.92);
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+  margin: 20px auto;
+  max-width: 980px;
+  color: #111;
+}
+
+.content-box h1,
+.content-box h2,
+.content-box p,
+.content-box ul {
+  color: #111;
+}
+
+.form-error {
+  color: #d32f2f;
+  margin-bottom: 12px;
 }
 
 .container {
@@ -44,6 +137,54 @@ a {
 
 .box:hover {
   background-color: #2980b9;
+}
+
+.team-status {
+  margin: 20px auto;
+  max-width: 720px;
+  padding: 16px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  color: #000;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.team-card {
+  background-color: rgba(255, 255, 255, 0.93);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  text-align: left;
+}
+
+.team-card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.team-card button,
+.team-card form button,
+.team-card a {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 16px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.team-card button:hover,
+.team-card a:hover {
+  background-color: #217dbb;
 }
 
 .overlay {
@@ -79,23 +220,45 @@ button {
   font-weight: bold;
 }
 
-#lose-color {
-  background-color: red;
-}
-
-#win {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-#win-color {
-  background-color: green;
-}
-
-#homepage-image {
-  background-size: cover;
-  background-image: url(/img/homepage.jpg);
+/* Win / Lose pages background and result boxes */
+body#win-color,
+body#lose-color {
+  background-image: url("../img/win-verlies.png");
   background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-box {
+  max-width: 900px;
+  margin: 40px;
+  padding: 36px 28px;
+  border-radius: 12px;
+  color: #ffffff;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+}
+
+.result-box.win-box {
+  background-color: rgba(34,139,34,0.95); /* green */
+}
+
+.result-box.lose-box {
+  background-color: rgba(220,20,60,0.95); /* red */
+}
+
+.result-box h1 {
+  margin-bottom: 12px;
+  font-size: 34px;
+}
+
+.result-box p {
+  font-size: 18px;
+  line-height: 1.4;
 }
 
 /* De achtergrond afbeelding van de hal */
