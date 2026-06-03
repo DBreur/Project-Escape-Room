@@ -35,7 +35,10 @@ try {
 <body class="room1">
   <h1>Team: <?= htmlspecialchars($teamName) ?></h1>
 
-  <div class="container">
+  <h1 class="time"></h1>
+  <object data="../img/hotspots_kelder.svg" type="image/svg+xml" class="svg-overlay"></object>
+
+  <!-- <div class="container">
     <?php foreach ($riddles as $index => $riddle) : ?>
     <div class="box box<?php echo $index + 1; ?>" onclick="openModal(<?php echo $index; ?>)"
       data-index="<?php echo $index; ?>" data-riddle="<?php echo htmlspecialchars($riddle['question']); ?>"
@@ -43,7 +46,7 @@ try {
       Box <?php echo $index + 1; ?>
     </div>
     <?php endforeach; ?>
-  </div>
+  </div> -->
 
   <section class="overlay" id="overlay" onclick="closeModal()"></section>
 
@@ -53,6 +56,14 @@ try {
     <input type="text" id="answer" placeholder="Typ je antwoord">
     <button onclick="checkAnswer()">Verzenden</button>
     <p id="feedback"></p>
+  </section>
+
+  <section id="escapeModal" class="modal-overlay">
+    <section class="modal-content">
+        <span class="close-btn" onclick="closeEscapeModal()">&times;</span>
+        <section id="modal-body-content">
+        </section>
+    </section>
   </section>
 
   <script src="../js/app.js"></script>

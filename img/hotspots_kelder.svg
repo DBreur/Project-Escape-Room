@@ -16,16 +16,19 @@
         }
     </style>
 
-    <!-- voordeur -->
-    <polygon points="1135,105 1410,103 1410,720 1135,706" class="hotspot" onclick="window.parent.inspectObject('voordeur')" />
+    <!-- doos stapel links (grote stapel links) -->
+    <polygon points="60,220 340,220 340,760 60,760" class="hotspot" onclick="window.parent.inspectObject('doos_stapel_links')" />
 
-    <!-- pinbord -->
-    <polygon points="1830,108 1920,53 1920,770 1830,720" class="hotspot" onclick="window.parent.inspectObject('pinbord')" />
+    <!-- doos stapel midden (naast wasmachine links) -->
+    <polygon points="460,360 760,360 760,760 460,760" class="hotspot" onclick="window.parent.inspectObject('doos_stapel_midden')" />
 
-    <!-- lamp -->
-    <polygon points="426,205 517,195 606,210 670,412 380,412" class="hotspot" onclick="window.parent.inspectObject('lamp')" />
+    <!-- wasmachine -->
+    <polygon points="820,300 1080,300 1080,660 820,660" class="hotspot" onclick="window.parent.inspectObject('wasmachine')" />
 
-    <!-- paneel -->
-    <polygon points="186,490 103,496 103,653 186,645" class="hotspot" onclick="window.parent.inspectObject('paneel')" />
+    <!-- doos stapel rechts (kleine stapel bij trap) -->
+    <polygon points="1180,520 1380,520 1380,760 1180,760" class="hotspot" onclick="window.parent.inspectObject('doos_stapel_rechts')" />
+
+    <!-- trap (rechtse kant) -->
+    <polygon points="1460,80 1920,80 1920,1080 1460,1080" class="hotspot" onclick="window.parent.inspectObject('trap')" />
 
 </svg>
