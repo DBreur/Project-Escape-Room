@@ -20,6 +20,21 @@ try {
 } catch (PDOException $e) {
   die("Databasefout: " . $e->getMessage());
 }
+
+$roomQuestions = [];
+foreach ($riddles as $index => $riddle) {
+  $numericCode = preg_replace('/[^0-9]/', '', $riddle['answer']);
+  if ($numericCode === '') {
+    $numericCode = (string) ($index + 1);
+  }
+  $roomQuestions[] = [
+    'id' => $riddle['id'] ?? ($index + 1),
+    'question' => $riddle['question'],
+    'hint' => $riddle['hint'],
+    'answer' => $riddle['answer'],
+    'code' => $numericCode,
+  ];
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,15 +53,18 @@ try {
   <h1 class="time"></h1>
   <object data="../img/hotspots_kelder.svg" type="image/svg+xml" class="svg-overlay"></object>
 
-  <!-- <div class="container">
-    <?php foreach ($riddles as $index => $riddle) : ?>
-    <div class="box box<?php echo $index + 1; ?>" onclick="openModal(<?php echo $index; ?>)"
-      data-index="<?php echo $index; ?>" data-riddle="<?php echo htmlspecialchars($riddle['question']); ?>"
-      data-answer="<?php echo htmlspecialchars($riddle['answer']); ?>">
-      Box <?php echo $index + 1; ?>
-    </div>
+  <section class="question-list">
+    <h2>Room 1 vragen</h2>
+    <?php foreach ($roomQuestions as $index => $question) : ?>
+      <article class="question-card">
+        <h3>Vraag <?php echo $index + 1; ?></h3>
+        <p><strong>Vraag:</strong> <?php echo htmlspecialchars($question['question']); ?></p>
+        <p><strong>Hint:</strong> <?php echo htmlspecialchars($question['hint']); ?></p>
+        <p><strong>Antwoord:</strong> <?php echo htmlspecialchars($question['answer']); ?></p>
+        <button type="button" onclick="startQuestion(<?php echo $index; ?>)">Bekijk vraag in modal</button>
+      </article>
     <?php endforeach; ?>
-  </div> -->
+  </section>
 
   <section class="overlay" id="overlay" onclick="closeModal()"></section>
 
@@ -66,6 +84,9 @@ try {
     </section>
   </section>
 
+  <script>
+    window.room1Questions = <?php echo json_encode($roomQuestions, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE); ?>;
+  </script>
   <script src="../js/app.js"></script>
 
 </body>

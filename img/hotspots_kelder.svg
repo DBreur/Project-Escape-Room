@@ -4,15 +4,12 @@
         .hotspot {
             cursor: pointer;
             fill: transparent;
-            stroke: #ff0000;
-            transition: fill 0.2s ease, stroke 0.2s ease;
+            stroke: transparent;
+            transition: fill 0.2s ease;
         }
-        /* TIJDELIJK: Tijdens het bouwen lichten de vakken rood op bij hover.
-           Haal de regels hieronder weg als je game helemaal af is! */
+        /* Subtiele hover-indicatie zonder zichtbare lijnen. */
         .hotspot:hover {
-            fill: rgba(255, 0, 0, 0.15);
-            stroke: #ff0000;
-            stroke-width: 2px;
+            fill: rgba(255, 255, 255, 0.05);
         }
     </style>
 

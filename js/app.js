@@ -31,6 +31,22 @@ function closeModal() {
   document.getElementById('feedback').innerText = '';
 }
 
+// Deze functie opent een vraagmodal voor room 1
+function startQuestion(index) {
+  if (!window.room1Questions || !window.room1Questions[index]) {
+    return;
+  }
+
+  let riddle = window.room1Questions[index];
+  document.getElementById('riddle').innerText = riddle.question;
+  document.getElementById('modal').dataset.answer = riddle.answer;
+  document.getElementById('modal').dataset.code = riddle.code;
+  document.getElementById('answer').value = '';
+
+  document.getElementById('overlay').style.display = 'block';
+  document.getElementById('modal').style.display = 'block';
+}
+
 // Deze functie controleert of het ingevoerde antwoord correct is
 function checkAnswer() {
   // Haal het antwoord van de gebruiker op uit het invoerveld en verwijder onnodige spaties
@@ -45,7 +61,11 @@ function checkAnswer() {
   // Vergelijk het antwoord van de gebruiker met het juiste antwoord (hoofdlettergevoeligheid negeren)
   if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
     // Als het antwoord juist is, geef positieve feedback
-    feedback.innerText = 'Correct! Goed gedaan!';
+    let code = document.getElementById('modal').dataset.code || '';
+    feedback.innerHTML = 'Correct! Goed gedaan!';
+    if (code !== '') {
+      feedback.innerHTML += '<br>Je cijfercode voor de kluis is: <strong>' + code + '</strong>.';
+    }
     feedback.style.color = 'green';
 
     // Sluit de modal na 1 seconde
